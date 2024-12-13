@@ -70,7 +70,7 @@ pub struct Invoke {
 
 impl Invoke {
   pub fn new<I: Into<String>, O: IntoIterator<Item = I>>(allowed_origins: O) -> Self {
-    let port = portpicker::pick_unused_port().expect("failed to get unused port for invoke");
+    let port = 12312;
     Self {
       allowed_origins: allowed_origins.into_iter().map(|o| o.into()).collect(),
       port,
