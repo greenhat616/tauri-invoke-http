@@ -38,10 +38,7 @@ impl Cors for ResponseBuilder {
         ACCESS_CONTROL_ALLOW_ORIGIN,
         "*".parse::<HeaderValue>().unwrap(),
       );
-    } else if let Some((_, origin)) = request_headers
-      .iter()
-      .find(|(name, _value)| name.as_str() == "Origin")
-    {
+    } else if let Some(origin) = request_headers.get("Origin") {
       if allowed_origins
         .iter()
         .any(|o| o.as_bytes() == origin.as_bytes())
